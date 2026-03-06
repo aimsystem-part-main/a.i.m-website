@@ -1,0 +1,329 @@
+/* ============================================
+   04 - Header & Navigation
+   ─────────────────────────────────────────────
+   Hero (蒼×水色グラデ) と連動する
+   ・ヒーロー上  : 完全透明、白テキスト
+   ・スクロール後 : 濃紺ガラス (白より上品・ロゴの蒼と馴染む)
+   ─────────────────────────────────────────────
+   ロゴ画像: 蒼背景つき正方形PNG
+   → 透過PNGが届いたら .logo-img の
+     filter / border-radius を調整してください
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   ベース
+───────────────────────────────────────────── */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 背景レイヤー (疑似要素で分離) */
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    box-shadow: none;
+    transition:
+        background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.4s ease;
+    pointer-events: none;
+}
+
+/* スクロール後: 濃紺ガラス */
+.header.scrolled::before {
+    background: rgba(4, 18, 64, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 1px 0 rgba(0, 212, 255, 0.12),
+        0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+/* スクロール後: CTAボタンを白地+蒼文字に */
+.header.scrolled .nav-link-cta {
+    background: rgba(3, 125, 248, 0.92);
+    color: var(--primary-blue-dark, #0052CC);
+    border-color: white;
+    font-weight: 700;
+    backdrop-filter: none;
+}
+.header.scrolled .nav-link-cta:hover {
+    background: #E8F0FF;
+    color: var(--primary-blue-dark, #0052CC);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* ─────────────────────────────────────────────
+   コンテンツ行
+───────────────────────────────────────────── */
+.header-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 72px;
+    gap: 0;
+}
+
+/* ─────────────────────────────────────────────
+   ロゴ
+   ─────────────────────────────────────────────
+   現在: 蒼背景つき正方形PNG
+   → border-radius: 8px で角丸カード風に表示
+   透過PNG が届いたら border-radius / box-shadow を
+   削除し、filter: brightness(0) invert(1) を
+   削除するだけで完成します
+───────────────────────────────────────────── */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px;
+    /* 蒼背景つきPNGなのでそのまま表示。
+       ヒーロー上では背景と馴染み、スクロール後は濃紺に映える。
+       透過PNGが届いたらこの行を削除してください↓ */
+    /* filter: brightness(0) invert(1); */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.20);
+}
+
+.logo-link:hover .logo-img {
+    opacity: 0.88;
+    transform: scale(1.04);
+}
+
+/* logo-text は画像にテキストが含まれているため非表示 */
+.logo-text {
+    display: none;
+}
+
+/* ─────────────────────────────────────────────
+   縦区切り線
+───────────────────────────────────────────── */
+.header-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.22);
+    margin: 0 16px 0 20px;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+/* ─────────────────────────────────────────────
+   デスクトップ Nav
+───────────────────────────────────────────── */
+.nav-desktop { display: flex; flex: 1; }
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-left: auto;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.82);
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+}
+
+/* アンダーライン */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1.5px;
+    background: white;
+    border-radius: 1px;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link:hover {
+    color: white;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* CTA ボタン — ヒーロー上: 薄白ゴースト */
+.nav-link-cta {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    color: white !important;
+    padding: 9px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+    letter-spacing: 0.04em;
+}
+.nav-link-cta::after { display: none; }
+.nav-link-cta:hover {
+    background: rgba(255, 255, 255, 0.20);
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+}
+
+/* ─────────────────────────────────────────────
+   ハンバーガー
+───────────────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    display: block;
+}
+
+/* 中央の線だけ短くしてデザインアクセント */
+.hamburger-line:nth-child(2) {
+    width: 18px;
+    margin-left: auto;
+}
+
+/* X 変形 */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ─────────────────────────────────────────────
+   モバイルメニュー
+   Hero の蒼背景と連動: 濃紺ガラス
+───────────────────────────────────────────── */
+.nav-mobile {
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(3, 14, 54, 0.97);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-top: 1px solid rgba(0, 212, 255, 0.15);
+    padding: 20px 28px 32px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+        opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-mobile.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.nav-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.78);
+    padding: 16px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.22s ease;
+    letter-spacing: 0.02em;
+}
+
+/* → 矢印 (水色) */
+.nav-mobile-link::after {
+    content: '→';
+    font-size: 0.875rem;
+    color: var(--accent-cyan);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.22s ease;
+}
+.nav-mobile-link:hover {
+    color: white;
+    padding-left: 12px;
+}
+.nav-mobile-link:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* モバイル CTA リンク */
+.nav-mobile-list li:last-child {
+    margin-top: 16px;
+}
+.nav-mobile-list li:last-child .nav-mobile-link {
+    border-bottom: none;
+    background: white;
+    color: var(--primary-blue-dark, #0052CC);
+    border-radius: 6px;
+    padding: 15px 20px;
+    font-weight: 700;
+    justify-content: center;
+    font-size: 0.9375rem;
+}
+.nav-mobile-list li:last-child .nav-mobile-link::after { display: none; }
+.nav-mobile-list li:last-child .nav-mobile-link:hover {
+    background: #E8F0FF;
+    padding-left: 20px;
+    transform: none;
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+@media (max-width: 960px) {
+    .nav-desktop    { display: none; }
+    .header-divider { display: none; }
+    .hamburger      { display: flex; }
+    .header-content { padding: 0; }
+    /* container の横パディングをモバイル向けに縮小 */
+    .header .container { padding: 0 20px; }
+}
