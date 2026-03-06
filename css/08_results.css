@@ -1,0 +1,204 @@
+/* ============================================
+   08 - Results Section
+   ============================================ */
+
+.results {
+    background: var(--bg-light);
+}
+
+.results-grid {
+    display: grid;
+    gap: 56px;
+    margin-bottom: 64px;
+}
+
+/* --- カード --- */
+.result-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-base);
+}
+
+.result-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* --- ビジュアル --- */
+.result-visual {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.result-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.result-card:hover .result-image {
+    transform: scale(1.05);
+}
+
+.result-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    box-shadow: var(--shadow-lg);
+}
+
+/* --- コンテンツ --- */
+.result-content {
+    padding: 40px;
+}
+
+.result-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    color: var(--text-dark);
+    line-height: 1.3;
+}
+
+/* --- 統計 --- */
+.result-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 32px;
+    padding: 28px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+}
+
+.result-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.result-stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.result-stat-label {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* --- Before / After 比較 --- */
+.result-comparison-modern {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.03) 0%,
+        rgba(0, 212, 255, 0.03) 100%);
+    border-radius: var(--radius-lg);
+    margin-bottom: 28px;
+    border: 2px solid rgba(0, 102, 255, 0.1);
+}
+
+.comparison-col {
+    flex: 1;
+    text-align: center;
+}
+
+.comparison-header {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.comparison-header.before {
+    background: #FEE2E2;
+    color: var(--error-red);
+}
+
+.comparison-header.after {
+    background: #D1FAE5;
+    color: var(--success-green);
+}
+
+.comparison-value-large {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.comparison-value-large.success {
+    color: var(--success-green);
+}
+
+.value-unit {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-gray);
+}
+
+.comparison-desc {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.comparison-arrow-modern {
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+/* --- 引用 --- */
+.result-quote {
+    padding: 24px 28px;
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.05) 0%,
+        rgba(0, 212, 255, 0.05) 100%);
+    border-left: 4px solid var(--primary-blue);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+/* --- CTA --- */
+.results-cta {
+    text-align: center;
+    padding: 64px 40px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: var(--radius-xl);
+    color: white;
+    box-shadow: var(--shadow-xl);
+}
+
+.results-cta-text {
+    font-size: 1.875rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    margin-bottom: 28px;
+}
