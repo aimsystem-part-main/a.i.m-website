@@ -1,0 +1,157 @@
+/* ============================================
+   09 - Plans Section
+   ============================================ */
+
+.plans {
+    background: white;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+/* --- カード --- */
+.plan-card {
+    position: relative;
+    background: white;
+    border: 2px solid var(--bg-gray);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: var(--transition-base);
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-blue);
+}
+
+.plan-card.popular {
+    border: 3px solid var(--primary-blue);
+    box-shadow: var(--shadow-lg);
+}
+
+/* --- ヘッダー --- */
+.plan-header {
+    background: var(--bg-light);
+    padding: 32px;
+    text-align: center;
+}
+
+.plan-card.popular .plan-header {
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.08) 0%,
+        rgba(0, 212, 255, 0.08) 100%);
+}
+
+.plan-name {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.price-amount {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.plan-note {
+    font-size: 1rem;
+    color: var(--success-green);
+    font-weight: 700;
+}
+
+/* --- ボディ --- */
+.plan-body {
+    padding: 32px;
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+.plan-feature.highlight {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.feature-check {
+    color: var(--primary-blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.plan-contract {
+    font-size: 0.9375rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    padding: 12px 20px;
+    background: rgba(0, 102, 255, 0.05);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.plan-option {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* --- フッター --- */
+.plan-footer {
+    padding: 0 32px 32px;
+}
+
+.plan-footer .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* --- 注記 --- */
+.plans-note {
+    text-align: center;
+    padding: 32px;
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+}
+
+.plans-note-text {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    line-height: 1.7;
+}
