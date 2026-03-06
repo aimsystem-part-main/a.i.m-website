@@ -1,0 +1,22 @@
+/* ============================================
+   styles.css - エントリーポイント
+   ============================================
+   このファイルで全CSSを一括インポート。
+   styles.css 1ファイルをHTMLで読み込むだけでOK。
+   ============================================ */
+
+@import url('./01_variables-reset.css');
+@import url('./02_base.css');
+@import url('./03_buttons.css');
+@import url('./04_header.css');
+@import url('./05_hero.css');
+@import url('./06_problems.css');
+@import url('./07_services.css');
+@import url('./08_results.css');
+@import url('./09_plans.css');
+@import url('./10_reasons.css');
+@import url('./11_about.css');
+@import url('./12_contact.css');
+@import url('./13_footer.css');
+@import url('./14_animations.css');
+@import url('./15_responsive.css');
