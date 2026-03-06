@@ -1,0 +1,156 @@
+/* ============================================
+   15 - Responsive Design
+   ============================================ */
+
+/* ================
+   タブレット（〜1024px）
+   ================ */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 3.25rem;
+    }
+
+    .service-tiktok-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .service-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* plans-grid は 768px でも変更するので、ここは省略して768pxに集約 */
+}
+
+/* ================
+   モバイル（〜768px）
+   ================ */
+@media (max-width: 768px) {
+
+    /* --- グローバル --- */
+    .container,
+    .container-narrow {
+        padding: 0 20px;
+    }
+
+    .section-padding {
+        padding: var(--section-padding-mobile) 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-title    { font-size: 2rem; }
+    .section-subtitle { font-size: 1rem; }
+
+    /* --- ヘッダー --- */
+    .nav-desktop { display: none; }
+    .hamburger   { display: flex; }
+
+    /* --- ヒーロー --- */
+    .hero-title    { font-size: 2.25rem; }
+    .hero-subtitle { font-size: 1.125rem; }
+    .hero-stat     { font-size: 1.4rem; }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* --- 課題 --- */
+    .problems-grid     { grid-template-columns: 1fr; }
+    .problem-card      { padding: 28px; }
+    .problems-solution { padding: 40px 24px; }
+
+    /* --- サービス --- */
+    .service-tiktok        { padding: 32px 20px; }
+    .service-tiktok-title  { font-size: 1.875rem; }
+    .service-tiktok-image  { height: 280px; }
+    .service-stats-row     { flex-direction: column; gap: 20px; }
+    .service-features-grid { grid-template-columns: 1fr; }
+    .services-sub-grid     { grid-template-columns: 1fr; }
+    .service-sub-visual    { height: 200px; }
+
+    /* --- 実績 --- */
+    .result-visual  { height: 280px; }
+    .result-content { padding: 28px; }
+    .result-title   { font-size: 1.625rem; }
+
+    .result-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .result-comparison-modern {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .comparison-arrow-modern {
+        transform: rotate(90deg);
+    }
+
+    .results-cta      { padding: 48px 24px; }
+    .results-cta-text { font-size: 1.5rem; }
+
+    /* --- 料金プラン --- */
+    .plans-grid { grid-template-columns: 1fr; }
+
+    /* --- 選ばれる理由 --- */
+    .reasons-grid { grid-template-columns: 1fr; }
+
+    /* --- 会社概要 --- */
+    .company-info {
+        padding: 32px;
+    }
+
+    .company-info-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    /* --- お問い合わせ --- */
+    .contact-methods { grid-template-columns: 1fr; }
+    .contact-form    { padding: 32px 20px; }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- フッター --- */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-nav { grid-template-columns: 1fr; }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+    }
+}
+
+/* ================
+   小型モバイル（〜480px）
+   ================ */
+@media (max-width: 480px) {
+    .hero-title   { font-size: 1.875rem; }
+    .section-title { font-size: 1.75rem; }
+
+    .btn-large {
+        padding: 16px 28px;
+        font-size: 1rem;
+    }
+}
