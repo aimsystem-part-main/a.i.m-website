@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="株式会社A.I.M 利用規約">
+    <title>利用規約 | 株式会社A.I.M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --blue: #0066FF; --blue-dark: #0052CC; --cyan: #00D4FF; --navy: #030E36;
+            --text-dark: #0F172A; --text-gray: #334155; --text-light: #64748B;
+            --bg-light: #F8FAFC; --border: rgba(0,102,255,.10);
+            --font-head: 'Playfair Display', serif; --font-body: 'Sora', sans-serif;
+        }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text-dark); background: #fff; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        a { color: var(--blue); text-decoration: none; transition: opacity .2s; }
+        a:hover { opacity: .75; text-decoration: underline; }
+
+        /* Header */
+        .site-header { background: var(--navy); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+        .site-header-logo { font-family: var(--font-head); font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: .04em; }
+        .site-header-back { font-size: .8125rem; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 6px; transition: color .2s; text-decoration: none; }
+        .site-header-back:hover { color: #fff; }
+
+        /* Hero */
+        .pp-hero { background: var(--navy); padding: 64px 32px 80px; text-align: center; position: relative; overflow: hidden; }
+        .pp-hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(0,102,255,.40) 0%, transparent 70%); pointer-events: none; }
+        .pp-hero::after { content: ''; position: absolute; bottom: -60px; right: 10%; width: 300px; height: 260px; background: radial-gradient(ellipse, rgba(0,212,255,.22) 0%, transparent 70%); pointer-events: none; }
+        .pp-hero-label { position: relative; z-index: 1; display: inline-block; font-size: .6875rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--cyan); margin-bottom: 16px; }
+        .pp-hero h1 { position: relative; z-index: 1; font-family: var(--font-head); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #fff; letter-spacing: -.01em; margin-bottom: 20px; }
+        .pp-hero-meta { position: relative; z-index: 1; font-size: .875rem; color: rgba(255,255,255,.50); }
+
+        /* Layout */
+        .pp-wrap { max-width: 860px; margin: 0 auto; padding: 72px 32px 100px; }
+
+        /* Lead */
+        .pp-lead { font-size: 1rem; color: var(--text-gray); line-height: 1.9; padding: 32px 36px; background: var(--bg-light); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; margin-bottom: 56px; }
+
+        /* Revision */
+        .pp-revision { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-light); border: 1px solid var(--border); border-radius: 6px; padding: 8px 18px; font-size: .8125rem; color: var(--text-light); margin-bottom: 56px; }
+        .pp-revision span { font-weight: 600; color: var(--text-dark); }
+
+        /* TOC */
+        .pp-toc { background: var(--bg-light); border: 1.5px solid var(--border); border-radius: 12px; padding: 32px 36px; margin-bottom: 64px; }
+        .pp-toc-title { font-size: .6875rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; }
+        .pp-toc ol { list-style: none; counter-reset: toc; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+        .pp-toc li { counter-increment: toc; font-size: .9rem; }
+        .pp-toc li::before { content: counter(toc, decimal-leading-zero) ". "; color: var(--blue); font-weight: 600; font-size: .75rem; margin-right: 4px; }
+        .pp-toc a { color: var(--text-gray); }
+        .pp-toc a:hover { color: var(--blue); text-decoration: none; }
+
+        /* Section */
+        .pp-section { margin-bottom: 56px; padding-top: 8px; border-top: 1px solid rgba(0,102,255,.08); }
+        .pp-section:first-of-type { border-top: none; }
+        .pp-section-num { font-size: .6875rem; font-weight: 700; letter-spacing: .2em; color: var(--cyan); text-transform: uppercase; margin-bottom: 8px; }
+        .pp-section h2 { font-family: var(--font-head); font-size: 1.375rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid; border-image: linear-gradient(90deg, var(--blue), var(--cyan)) 1; display: inline-block; width: 100%; }
+        .pp-section p { font-size: .9375rem; color: var(--text-gray); line-height: 1.9; margin-bottom: 14px; }
+        .pp-section p:last-child { margin-bottom: 0; }
+
+        /* List */
+        .pp-list { list-style: none; margin: 12px 0 16px; display: flex; flex-direction: column; gap: 10px; }
+        .pp-list li { position: relative; padding-left: 22px; font-size: .9375rem; color: var(--text-gray); line-height: 1.8; }
+        .pp-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 7px; height: 7px; background: linear-gradient(135deg, var(--blue), var(--cyan)); border-radius: 50%; }
+
+        /* Note */
+        .pp-note { display: flex; gap: 14px; align-items: flex-start; background: rgba(0,102,255,.04); border: 1.5px solid rgba(0,102,255,.12); border-radius: 10px; padding: 20px 24px; margin: 16px 0; }
+        .pp-note-icon { flex-shrink: 0; width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--cyan)); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .pp-note-body { font-size: .9rem; color: var(--text-gray); line-height: 1.85; }
+        .pp-note-body strong { color: var(--text-dark); }
+
+        /* Footer */
+        .pp-footer { background: var(--navy); text-align: center; padding: 40px 32px; font-size: .8125rem; color: rgba(255,255,255,.35); }
+        .pp-footer a { color: rgba(255,255,255,.55); text-decoration: none; margin: 0 8px; }
+        .pp-footer a:hover { color: #fff; }
+        .pp-footer-links { margin-bottom: 12px; }
+
+        @media (max-width: 640px) {
+            .pp-wrap { padding: 48px 20px 72px; }
+            .pp-toc ol { grid-template-columns: 1fr; }
+            .pp-lead, .pp-toc { padding: 24px 20px; }
+            .site-header { padding: 16px 20px; }
+            .pp-hero { padding: 48px 20px 64px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header-logo">A.I.M</div>
+    <a href="index.html" class="site-header-back">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        トップページへ戻る
+    </a>
+</header>
+
+<div class="pp-hero">
+    <div class="pp-hero-label">Legal</div>
+    <h1>利用規約</h1>
+    <p class="pp-hero-meta">株式会社A.I.M &nbsp;|&nbsp; Terms of Service</p>
+</div>
+
+<main class="pp-wrap">
+
+    <div class="pp-revision">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 7h6M7 10h6M7 13h4"/>
+        </svg>
+        制定日：2024年12月26日 &nbsp;&nbsp; 最終改定日：<span>2025年1月1日</span>
+    </div>
+
+    <p class="pp-lead">
+        本利用規約（以下「本規約」）は、株式会社A.I.M（以下「当社」）が提供するすべてのサービス（TikTok採用戦略支援・インフルエンサーキャスティング・DX支援・AIコンサルティング・システム受託開発、および本ウェブサイト。以下総称して「本サービス」）の利用条件を定めるものです。本サービスをご利用いただく方（以下「利用者」）は、本規約に同意の上ご利用ください。
+    </p>
+
+    <!-- TOC -->
+    <nav class="pp-toc">
+        <div class="pp-toc-title">目次 — Table of Contents</div>
+        <ol>
+            <li><a href="#t1">適用範囲</a></li>
+            <li><a href="#t2">定義</a></li>
+            <li><a href="#t3">サービスの申込・契約成立</a></li>
+            <li><a href="#t4">料金・支払い</a></li>
+            <li><a href="#t5">契約期間・解約</a></li>
+            <li><a href="#t6">禁止事項</a></li>
+            <li><a href="#t7">知的財産権</a></li>
+            <li><a href="#t8">秘密保持</a></li>
+            <li><a href="#t9">個人情報の取り扱い</a></li>
+            <li><a href="#t10">免責事項</a></li>
+            <li><a href="#t11">サービスの変更・停止</a></li>
+            <li><a href="#t12">損害賠償</a></li>
+            <li><a href="#t13">反社会的勢力の排除</a></li>
+            <li><a href="#t14">規約の変更</a></li>
+            <li><a href="#t15">準拠法・管轄裁判所</a></li>
+            <li><a href="#t16">お問い合わせ</a></li>
+        </ol>
+    </nav>
+
+    <!-- 第1条 -->
+    <section class="pp-section" id="t1">
+        <div class="pp-section-num">Article 01</div>
+        <h2>適用範囲</h2>
+        <p>本規約は、当社が提供する本サービスの利用に関して、利用者と当社との間に適用されます。当社が別途定める個別契約・覚書・仕様書等（以下「個別契約」）が存在する場合、個別契約が本規約に優先して適用されます。</p>
+        <p>本サービスを利用することにより、利用者は本規約に同意したものとみなします。</p>
+    </section>
+
+    <!-- 第2条 -->
+    <section class="pp-section" id="t2">
+        <div class="pp-section-num">Article 02</div>
+        <h2>定義</h2>
+        <p>本規約において使用する用語の定義は以下の通りです。</p>
+        <ul class="pp-list">
+            <li>「利用者」：本サービスを利用する法人または個人をいいます。</li>
+            <li>「成果物」：当社が本サービスの提供において制作・納品する動画・画像・テキスト・システム・その他一切の制作物をいいます。</li>
+            <li>「コンテンツ」：本サービスを通じて作成・投稿・掲載される情報・データをいいます。</li>
+        </ul>
+    </section>
+
+    <!-- 第3条 -->
+    <section class="pp-section" id="t3">
+        <div class="pp-section-num">Article 03</div>
+        <h2>サービスの申込・契約成立</h2>
+        <p>本サービスの利用申込は、当社所定の申込書または電子メールによるものとします。当社が利用者に対して承諾の意思表示を行った時点で、利用者と当社との間に本規約に基づく契約が成立します。</p>
+        <p>当社は、以下のいずれかに該当する場合、申込を拒否することがあります。</p>
+        <ul class="pp-list">
+            <li>申込内容に虚偽・誤記がある場合</li>
+            <li>過去に本規約違反等により取引を停止された経歴がある場合</li>
+            <li>反社会的勢力に該当する、またはそのおそれがある場合</li>
+            <li>その他当社が不適切と判断した場合</li>
+        </ul>
+    </section>
+
+    <!-- 第4条 -->
+    <section class="pp-section" id="t4">
+        <div class="pp-section-num">Article 04</div>
+        <h2>料金・支払い</h2>
+        <p>本サービスの料金は、当社が別途定める料金表または個別契約に記載された金額とします。料金には消費税が別途加算されます。</p>
+        <p>支払い方法は銀行振込を原則とし、毎月末日締め翌月末日払いとします。支払いが遅延した場合、利用者は年率14.6%の遅延損害金を支払うものとします。</p>
+        <div class="pp-note">
+            <div class="pp-note-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 14h.01"/>
+                </svg>
+            </div>
+            <div class="pp-note-body">
+                <strong>料金の改定：</strong>当社は、経済情勢の変化・サービス内容の変更等を理由として料金を改定する場合があります。改定の際は、1ヶ月以上前に利用者へ通知します。
+            </div>
+        </div>
+    </section>
+
+    <!-- 第5条 -->
+    <section class="pp-section" id="t5">
+        <div class="pp-section-num">Article 05</div>
+        <h2>契約期間・解約</h2>
+        <p>本サービスの契約期間は、個別契約に定める期間とします。TikTok採用戦略支援の標準プランは6ヶ月契約とし、契約満了の1ヶ月前までに書面または電子メールによる解約の意思表示がない場合、同条件で自動更新されます。</p>
+        <p>契約期間中の中途解約を希望する場合は、書面または電子メールにて当社に通知してください。この場合、残契約期間に応じた違約金が発生することがあります（特定商取引法に基づく表記もあわせてご確認ください）。</p>
+        <p>当社は、利用者が以下のいずれかに該当する場合、即時に契約を解除することができます。</p>
+        <ul class="pp-list">
+            <li>本規約または個別契約に違反し、催告後14日以内に是正されない場合</li>
+            <li>支払いを2ヶ月以上怠った場合</li>
+            <li>破産・民事再生・会社更生等の申立てがあった場合</li>
+            <li>反社会的勢力であることが判明した場合</li>
+        </ul>
+    </section>
+
+    <!-- 第6条 -->
+    <section class="pp-section" id="t6">
+        <div class="pp-section-num">Article 06</div>
+        <h2>禁止事項</h2>
+        <p>利用者は、本サービスの利用にあたり、以下の行為を行ってはなりません。</p>
+        <ul class="pp-list">
+            <li>法令・公序良俗に違反する行為</li>
+            <li>当社または第三者の知的財産権・肖像権・プライバシーを侵害する行為</li>
+            <li>虚偽の情報を提供する行為</li>
+            <li>当社の事前承諾なく、本サービスを通じて取得したノウハウ・情報を第三者に開示・転用する行為</li>
+            <li>当社の競合他社へのサービス内容・成果物の提供・転売</li>
+            <li>本サービスの運営を妨害する行為</li>
+            <li>その他当社が不適切と判断する行為</li>
+        </ul>
+    </section>
+
+    <!-- 第7条 -->
+    <section class="pp-section" id="t7">
+        <div class="pp-section-num">Article 07</div>
+        <h2>知的財産権</h2>
+        <p>本サービスを通じて当社が制作した成果物（動画・画像・テキスト・プログラム等）に関する著作権その他一切の知的財産権は、料金の完済をもって利用者に譲渡されます（ただし、当社が保有する汎用的なノウハウ・ツール・素材等は除きます）。</p>
+        <p>利用者が当社に提供した素材・情報等に関する知的財産権は利用者に帰属し、利用者は当社に対して本サービス遂行に必要な範囲での利用を許諾するものとします。</p>
+        <p>当社は、成果物を自社のポートフォリオ・実績紹介に使用することがあります。利用者が使用を希望しない場合は、契約締結時にその旨をお申し出ください。</p>
+    </section>
+
+    <!-- 第8条 -->
+    <section class="pp-section" id="t8">
+        <div class="pp-section-num">Article 08</div>
+        <h2>秘密保持</h2>
+        <p>当社および利用者は、本サービスの遂行を通じて知り得た相手方の技術上・営業上その他の秘密情報を、相手方の事前の書面による承諾なく第三者に開示・漏洩してはならず、本サービスの遂行目的以外に使用してはなりません。</p>
+        <p>ただし、以下の情報はこの限りではありません。</p>
+        <ul class="pp-list">
+            <li>開示を受けた時点で既に公知であった情報</li>
+            <li>開示を受けた後、自己の責めによらず公知となった情報</li>
+            <li>正当な権限を有する第三者から守秘義務を負うことなく取得した情報</li>
+            <li>法令・裁判所・行政機関の命令により開示が義務付けられた情報</li>
+        </ul>
+        <p>秘密保持義務は、契約終了後2年間継続して効力を有します。</p>
+    </section>
+
+    <!-- 第9条 -->
+    <section class="pp-section" id="t9">
+        <div class="pp-section-num">Article 09</div>
+        <h2>個人情報の取り扱い</h2>
+        <p>当社は、本サービスの提供において取得した個人情報を、当社が別途定める<a href="privacy-policy.html">プライバシーポリシー</a>に従い適切に管理します。</p>
+    </section>
+
+    <!-- 第10条 -->
+    <section class="pp-section" id="t10">
+        <div class="pp-section-num">Article 10</div>
+        <h2>免責事項</h2>
+        <p>当社は、本サービスの利用に関して以下について保証せず、これらに起因する損害について責任を負いません。</p>
+        <ul class="pp-list">
+            <li>本サービスの利用による特定の採用成果・ビジネス成果の達成（再生数・応募数・採用数等の数値保証は行いません）</li>
+            <li>TikTok・Instagram・X等の外部プラットフォームの仕様変更・アカウント停止・サービス終了による影響</li>
+            <li>天災・感染症・戦争・法令改正・行政機関の措置等の不可抗力による本サービスの中断・遅延</li>
+            <li>利用者が提供した素材・情報の瑕疵・第三者の権利侵害</li>
+            <li>本サービスを通じた第三者との間のトラブル</li>
+        </ul>
+        <div class="pp-note">
+            <div class="pp-note-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 14h.01"/>
+                </svg>
+            </div>
+            <div class="pp-note-body">
+                当社の故意または重大な過失による場合はこの限りではありません。
+            </div>
+        </div>
+    </section>
+
+    <!-- 第11条 -->
+    <section class="pp-section" id="t11">
+        <div class="pp-section-num">Article 11</div>
+        <h2>サービスの変更・停止</h2>
+        <p>当社は、以下の場合に本サービスの内容変更・一時停止・終了を行うことがあります。やむを得ない事情がある場合を除き、事前に利用者へ通知します。</p>
+        <ul class="pp-list">
+            <li>システムメンテナンス・設備障害対応</li>
+            <li>天災・不可抗力による緊急事態</li>
+            <li>外部プラットフォームの仕様変更・規約変更への対応</li>
+            <li>その他当社が必要と判断した場合</li>
+        </ul>
+    </section>
+
+    <!-- 第12条 -->
+    <section class="pp-section" id="t12">
+        <div class="pp-section-num">Article 12</div>
+        <h2>損害賠償</h2>
+        <p>当社の責に帰すべき事由により利用者に損害が生じた場合、当社が負う損害賠償責任の上限は、損害が発生した月における当該利用者からの月額料金相当額とします。</p>
+        <p>ただし、当社の故意または重大な過失による場合はこの限りではありません。また、逸失利益・間接損害・特別損害については、当社の故意または重大な過失がある場合を除き、賠償責任を負いません。</p>
+    </section>
+
+    <!-- 第13条 -->
+    <section class="pp-section" id="t13">
+        <div class="pp-section-num">Article 13</div>
+        <h2>反社会的勢力の排除</h2>
+        <p>当社および利用者は、現在および将来にわたり、自らが反社会的勢力（暴力団・暴力団員・暴力団員でなくなった時から5年を経過しない者・暴力団準構成員・暴力団関係企業・総会屋等・社会運動等標ぼうゴロ・特殊知能暴力集団その他これらに準ずる者）に該当しないこと、および反社会的勢力と利益供与その他の関与をしていないことを表明・保証します。</p>
+        <p>いずれかの当事者がこれに違反した場合、相手方は催告なく直ちに契約を解除することができ、解除による損害の賠償を請求することができます。</p>
+    </section>
+
+    <!-- 第14条 -->
+    <section class="pp-section" id="t14">
+        <div class="pp-section-num">Article 14</div>
+        <h2>規約の変更</h2>
+        <p>当社は、法令の改正・事業内容の変更その他必要に応じて本規約を変更することがあります。変更後の規約は、本ウェブサイト上に掲載した時点から効力を生じます。重要な変更がある場合は、ウェブサイト上でのお知らせまたは電子メールにより事前に通知します。</p>
+        <p>変更後も本サービスを継続して利用した場合、変更後の規約に同意したものとみなします。</p>
+    </section>
+
+    <!-- 第15条 -->
+    <section class="pp-section" id="t15">
+        <div class="pp-section-num">Article 15</div>
+        <h2>準拠法・管轄裁判所</h2>
+        <p>本規約は日本法を準拠法とします。本サービスに関して当社と利用者の間で生じた紛争については、神戸地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+    </section>
+
+    <!-- 第16条 -->
+    <section class="pp-section" id="t16">
+        <div class="pp-section-num">Article 16</div>
+        <h2>お問い合わせ</h2>
+        <p>本規約に関するお問い合わせは、以下の窓口までご連絡ください。</p>
+        <ul class="pp-list">
+            <li>株式会社A.I.M</li>
+            <li>E-mail：<a href="mailto:info@aim-inc.co.jp">info@aim-inc.co.jp</a></li>
+            <li>受付時間：平日 10:00〜18:00（土日祝・年末年始を除く）</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer class="pp-footer">
+    <div class="pp-footer-links">
+        <a href="./index.html">トップページ</a>
+        <a href="./privacy-policy.html">プライバシーポリシー</a>
+        <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="./terms.html">利用規約</a>
+    </div>
+    <p>&copy; 2025 株式会社A.I.M All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
