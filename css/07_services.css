@@ -1,0 +1,588 @@
+/* ============================================
+   07 - Services Section
+   ============================================ */
+
+.services {
+    background: white;
+}
+
+section-padding { padding: 100px 0; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.section-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--primary-blue); margin-bottom: 20px;
+}
+.section-eyebrow::before, .section-eyebrow::after {
+    content:''; display:block; width:28px; height:1.5px; background:var(--accent-cyan);
+}
+.section-header { text-align: center; margin-bottom: 72px; }
+.section-title {
+    font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem);
+    font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; line-height:1.2; margin-bottom:14px;
+}
+.section-subtitle { font-size:1rem; color:var(--text-light); }
+
+/* ================
+   TikTok メインサービス
+   ================ */
+
+/* 01: 平行四辺形 — TikTok 3層カラー */
+.badge-tiktok {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--tiktok-black);
+    padding: 7px 22px 7px 14px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    margin-bottom: 20px;
+    position: relative;
+    isolation: isolate;
+    cursor: default;
+}
+.badge-tiktok::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--tiktok-pink);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transform: translate(3px, 3px);
+    z-index: -1;
+}
+.badge-tiktok::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--tiktok-cyan);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transform: translate(6px, 6px);
+    z-index: -2;
+}
+.badge-tiktok-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--tiktok-pink);
+    box-shadow: 0 0 0 1.5px var(--tiktok-cyan);
+    flex-shrink: 0;
+}
+
+.service-tiktok {
+    position: relative;
+    background: linear-gradient(135deg,
+        rgba(1, 1, 1, 0.03) 0%,
+        rgba(254, 44, 85, 0.03) 50%,
+        rgba(37, 244, 238, 0.03) 100%);
+    border: 2px solid rgba(1, 1, 1, 0.08);
+    border-radius: var(--radius-xl);
+    padding: 56px;
+    margin-bottom: 48px;
+    overflow: hidden;
+}
+
+/* ============================================================
+   BADGE 3種
+   ============================================================ */
+
+/* 01: 平行四辺形 — TikTok 3層カラー */
+.badge-tiktok {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--tiktok-black);
+    padding: 7px 22px 7px 14px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    margin-bottom: 20px;
+    position: relative;
+    isolation: isolate;
+    cursor: default;
+}
+.badge-tiktok::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--tiktok-pink);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transform: translate(3px, 3px);
+    z-index: -1;
+}
+.badge-tiktok::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--tiktok-cyan);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transform: translate(6px, 6px);
+    z-index: -2;
+}
+.badge-tiktok-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--tiktok-pink);
+    box-shadow: 0 0 0 1.5px var(--tiktok-cyan);
+    flex-shrink: 0;
+}
+
+/* 02: 右三角ノッチ — 蒼グラデ */
+.badge-influencer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: white;
+    background: linear-gradient(110deg, var(--primary-blue-dark) 0%, var(--primary-blue) 60%, var(--accent-cyan) 100%);
+    padding: 7px 32px 7px 16px;
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 20px;
+    position: relative;
+}
+/* ノッチ: サブカード背景色 (var(--bg-light)) に合わせた三角 */
+.badge-influencer::after {
+    content: '';
+    position: absolute;
+    right: -1px; top: 0; bottom: 0;
+    width: 16px;
+    background: var(--bg-light);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.badge-influencer-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: 1.5px solid rgba(255,255,255,0.8);
+    flex-shrink: 0;
+}
+
+/* 03: 四角・左縦ボーダー — ダーク */
+.badge-dx {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    background: white;
+    border: 1px solid var(--bg-gray);
+    border-left: 3px solid var(--primary-blue);
+    padding: 7px 16px;
+    border-radius: 0;
+    margin-bottom: 20px;
+}
+.badge-dx-num {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 背景装飾 */
+.service-tiktok::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* --- TikTok コンテンツ レイアウト --- */
+.service-tiktok-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 56px;
+    align-items: center;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- TikTok ロゴテキスト --- */
+.tiktok-logo-text {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    color: var(--tiktok-black);
+    position: relative;
+    display: inline-block;
+}
+
+.tiktok-logo-text::after {
+    content: 'TikTok';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: var(--tiktok-cyan);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* --- テキスト情報 --- */
+.service-tiktok-title {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+
+.service-tiktok-subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.service-tiktok-description {
+    font-size: 1.125rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* --- 統計 --- */
+.service-stats-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.stat-item-tiktok {
+    text-align: center;
+}
+
+.stat-number-tiktok {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label-tiktok {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* --- 画像 --- */
+.service-tiktok-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 3px solid var(--tiktok-black);
+}
+
+/* --- 特徴グリッド --- */
+.service-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-item-tiktok {
+    background: white;
+    padding: 28px;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(1, 1, 1, 0.08);
+    transition: var(--transition-base);
+}
+
+.feature-item-tiktok:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-number-tiktok {
+    font-family: var(--font-body);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+}
+
+.feature-title-tiktok {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.feature-text-tiktok {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   サブサービス
+   ============================================================ */
+.services-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.service-sub-card {
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition-base);
+    border: 1.5px solid rgba(0,102,255,0.08);
+    display: flex; flex-direction: column;
+}
+.service-sub-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(0,102,255,0.22);
+}
+.service-sub-visual { width: 100%; height: 240px; overflow: hidden; }
+.service-sub-image {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.service-sub-card:hover .service-sub-image { transform: scale(1.05); }
+
+.service-sub-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.service-sub-title {
+    font-family: var(--font-heading); font-size: 1.375rem; font-weight: 700;
+    margin-bottom: 12px; color: var(--text-dark); line-height: 1.4;
+}
+.service-sub-text {
+    font-size: 0.9375rem; color: var(--text-gray);
+    line-height: 1.75; margin-bottom: 20px; flex: 1;
+}
+.service-sub-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--primary-blue); font-weight: 600; font-size: 0.9375rem;
+    transition: var(--transition-base); align-self: flex-start;
+}
+.service-sub-link:hover { gap: 12px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .service-tiktok { padding: 48px 40px; }
+    .service-tiktok-content { grid-template-columns: 1fr; gap: 40px; }
+    .service-tiktok-image { height: 300px; }
+    .service-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .service-tiktok { padding: 32px 24px; border-radius: var(--radius-lg); margin-bottom: 32px; }
+    .service-tiktok-content { grid-template-columns: 1fr; gap: 28px; margin-bottom: 32px; }
+
+    .service-tiktok-right { width: 100%; display: flex; justify-content: center; }
+    .service-tiktok-image { width: 100%; height: 220px; border-radius: var(--radius-md); }
+
+    .service-tiktok-title { font-size: 1.75rem; }
+    .service-tiktok-subtitle { font-size: 1rem; }
+    .service-tiktok-description { font-size: 0.9375rem; margin-bottom: 24px; }
+
+    .stat-item-tiktok { padding: 0 16px 0 0; }
+    .stat-item-tiktok + .stat-item-tiktok { padding: 0 16px; }
+    .stat-number-tiktok { font-size: 1.75rem; }
+
+    .service-features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .feature-item-tiktok { padding: 18px; }
+
+    .services-sub-grid { grid-template-columns: 1fr; gap: 16px; }
+    .service-sub-visual { height: 200px; }
+
+    /* ノッチバッジ: サブカード背景に合わせる */
+    .service-sub-card .badge-influencer::after { background: var(--bg-light); }
+}
+
+@media (max-width: 480px) {
+    .service-features-grid { grid-template-columns: 1fr; }
+
+    .service-stats-row { flex-wrap: wrap; gap: 16px; }
+    .stat-item-tiktok,
+    .stat-item-tiktok + .stat-item-tiktok { padding: 0; border-left: none; }
+}
+
+
+
+/* ================
+   左右カラム
+   ================ */
+.service-tiktok-left {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.service-tiktok-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0; /* grid child がはみ出さないように */
+}
+
+/* ================
+   CTAボタン
+   ================ */
+.service-tiktok-cta {
+    margin-top: 8px;
+}
+
+/* ================
+   stat テキスト左揃え（内容に合わせ自然に）
+   ================ */
+.service-stats-row {
+    /* 左揃えで統計を横並び */
+    justify-content: flex-start;
+}
+
+.stat-item-tiktok {
+    text-align: left;
+}
+
+/* stat 区切り線 */
+.stat-item-tiktok + .stat-item-tiktok {
+    padding-left: 32px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ================
+   特徴グリッド ホバー — 蒼アクセント強化
+   ================ */
+.feature-item-tiktok:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.12);
+}
+
+/* feature番号をグラデに */
+.feature-number-tiktok {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================
+   レスポンシブ
+   ================ */
+@media (max-width: 1024px) {
+    .service-tiktok-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .service-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-tiktok {
+        padding: 32px 20px;
+    }
+
+    .service-tiktok-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    /* モバイル: 画像コンテナを幅いっぱいに・確実に中央揃え */
+    .service-tiktok-right {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .service-tiktok-image {
+        width: 100%;
+        max-width: 100%;
+        height: 240px;
+        margin: 0 auto;
+        display: block;
+        object-fit: cover;
+        object-position: center center;
+        border-radius: var(--radius-lg);
+    }
+
+    .service-tiktok-title {
+        font-size: 1.75rem;
+    }
+
+    .service-tiktok-description {
+        font-size: 1rem;
+        margin-bottom: 28px;
+    }
+
+    .service-stats-row {
+        gap: 16px;
+        justify-content: space-between;
+    }
+
+    .stat-item-tiktok {
+        text-align: center;
+    }
+
+    .stat-number-tiktok {
+        font-size: 1.75rem;
+    }
+
+    .service-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .feature-item-tiktok {
+        padding: 20px;
+    }
+
+    .services-sub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-sub-visual {
+        height: 200px;
+    }
+
+    /* サブカードのラベル・テキストのpadding統一 */
+    .service-sub-card > .service-label {
+        margin: 20px 20px 0;
+    }
+
+    .service-sub-title {
+        margin: 16px 20px 10px;
+    }
+
+    .service-sub-text {
+        margin: 0 20px 16px;
+    }
+
+    .service-sub-link {
+        margin: 0 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
