@@ -1,0 +1,140 @@
+/* ============================================
+   03 - Buttons
+   ============================================ */
+
+/* --- Base Button --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-body);
+}
+
+/* リップルエフェクト */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* --- Arrow Icon --- */
+.btn-arrow {
+    transition: transform var(--transition-base);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* --- Size Variant --- */
+.btn-large {
+    padding: 18px 36px;
+    font-size: 1.0625rem;
+}
+
+/* --- Color Variants --- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--primary-blue);
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+}
+
+.btn-black {
+    background: var(--text-dark);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-black:hover {
+    background: #000;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-tiktok {
+    background: var(--tiktok-pink);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-tiktok:hover {
+    background: #FE1C45;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px rgba(254, 44, 85, 0.3);
+}
+
+.btn-line {
+    background: var(--line-green);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-line:hover {
+    background: var(--line-green-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px rgba(0, 195, 0, 0.3);
+}
+
+.btn-plan {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-plan:hover {
+    background: var(--primary-blue-dark);
+    transform: translateY(-3px);
+}
+
+.btn-plan-popular {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    color: white;
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-plan-popular:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 25px 30px rgba(0, 102, 255, 0.4);
+}
+
+/* --- Utility --- */
+.btn-submit {
+    width: 100%;
+    justify-content: center;
+}
