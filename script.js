@@ -206,25 +206,61 @@
     }
 
     /* ─────────────────────────────────────────
-       お問い合わせフォーム: 送信処理
+       お問い合わせフォーム: Formspree送信処理
+       送信先: aimediapro1@gmail.com
     ───────────────────────────────────────── */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            const btn = contactForm.querySelector('.btn-submit');
-            if (btn) {
-                btn.disabled = true;
-                btn.querySelector('span').textContent = '送信中...';
+            const btn        = contactForm.querySelector('.btn-submit');
+            const btnText    = btn ? btn.querySelector('span') : null;
+            const successMsg = document.getElementById('formSuccess');
+
+            // _replyto にお客様のメールアドレスをセット（返信がお客様に届くように）
+            const emailInput  = contactForm.querySelector('input[name="email"]');
+            const replyInput  = contactForm.querySelector('input[name="_replyto"]');
+            if (emailInput && replyInput) {
+                replyInput.value = emailInput.value;
             }
 
-            /* ここに実際の送信処理（Fetch / FormSubmit など）を追加 */
-            setTimeout(() => {
-                contactForm.style.display = 'none';
-                const successMsg = document.querySelector('.form-success');
-                if (successMsg) successMsg.style.display = 'flex';
-            }, 1000);
+            // ボタンを送信中に変更
+            if (btn) {
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+            }
+            if (btnText) btnText.textContent = '送信中...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // 送信成功 → フォームを非表示にして完了メッセージを表示
+                    contactForm.style.display = 'none';
+                    if (successMsg) {
+                        successMsg.style.display = 'flex';
+                        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    // サーバーエラー
+                    const data = await response.json().catch(() => ({}));
+                    const msg  = (data.errors && data.errors.map(e => e.message).join(', '))
+                                 || '送信に失敗しました。お手数ですが、メールにて直接ご連絡ください。';
+                    alert(msg);
+                    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+                    if (btnText) btnText.textContent = '送信する';
+                }
+            } catch (err) {
+                // ネットワークエラー
+                alert('通信エラーが発生しました。インターネット接続を確認の上、再度お試しください。');
+                if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+                if (btnText) btnText.textContent = '送信する';
+            }
         });
     }
 
