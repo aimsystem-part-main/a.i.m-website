@@ -1,0 +1,276 @@
+/* ============================================
+   11 - About Section
+   シャープ（radius 0〜4px）× ドットグリッド背景
+   ============================================ */
+
+.about {
+    position: relative;
+    background: white;
+    overflow: hidden;
+}
+
+/* ドットグリッド */
+.about::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(0,102,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+}
+
+/* ===== ヘッダー ===== */
+.about-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 56px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--bg-gray);
+    position: relative; z-index: 1;
+}
+
+.about-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.about-header-note {
+    font-size: 0.8125rem;
+    color: var(--text-light);
+    line-height: 1.9;
+    max-width: 280px;
+    text-align: right;
+}
+
+/* ============================================
+   VMV グリッド
+   ============================================ */
+.about-vmv-grid,
+.about-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-cyan) 100%) 1;
+    border-left: 1px solid var(--bg-gray);
+    border-right: 1px solid var(--bg-gray);
+    border-bottom: 1px solid var(--bg-gray);
+    margin-bottom: 60px;
+    position: relative; z-index: 1;
+}
+
+.about-vmv-card,
+.about-vision-card {
+    background: white;
+    padding: 40px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.about-vmv-card + .about-vmv-card,
+.about-vision-card + .about-vision-card {
+    border-left: 1px solid var(--bg-gray);
+}
+
+.about-vmv-card:hover,
+.about-vision-card:hover { background: #F5F8FF; }
+
+/* ラベル行 */
+.vmv-label-row,
+.about-vision-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.vmv-label,
+.about-vision-label {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+}
+
+/* 透かし番号 */
+.vmv-num,
+.about-vision-num {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.09;
+    user-select: none;
+    letter-spacing: -0.04em;
+    transition: opacity 0.2s;
+}
+
+.about-vmv-card:hover .vmv-num,
+.about-vision-card:hover .about-vision-num { opacity: 0.18; }
+
+/* 短い蒼ライン */
+.vmv-divider,
+.about-vision-divider {
+    width: 24px; height: 2px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+    margin-bottom: 16px;
+}
+
+.vmv-title,
+.about-vision-title {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.65;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+}
+
+.vmv-text,
+.about-vision-text {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.9;
+}
+
+/* ============================================
+   会社情報テーブル
+   ============================================ */
+.company-info {
+    border: 1px solid var(--bg-gray);
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(180deg, var(--primary-blue) 0%, var(--accent-cyan) 100%) 1;
+    background: white;
+    position: relative; z-index: 1;
+}
+
+/* ヘッダーバー */
+.company-info-bar {
+    background: var(--text-dark);
+    padding: 14px 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.company-info-bar-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+}
+
+.company-info-bar-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+}
+
+/* 行 */
+.company-info-row,
+.company-info-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid var(--bg-gray);
+    transition: background 0.15s;
+}
+.company-info-row:last-child,
+.company-info-item:last-child { border-bottom: none; }
+
+.company-info-row:nth-child(even),
+.company-info-item:nth-child(even) { background: var(--bg-light); }
+
+.company-info-row:hover,
+.company-info-item:hover { background: #EFF5FF; }
+
+.company-info-label {
+    padding: 20px 16px 20px 36px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    border-right: 1px solid var(--bg-gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.company-info-label::before {
+    content: '';
+    display: block;
+    width: 2px; height: 14px;
+    background: linear-gradient(180deg, var(--primary-blue), var(--accent-cyan));
+    flex-shrink: 0;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+}
+
+.company-info-row:hover .company-info-label::before,
+.company-info-item:hover .company-info-label::before { opacity: 1; }
+
+.company-info-value {
+    padding: 20px 36px;
+    font-size: 0.9375rem;
+    color: var(--text-dark);
+    line-height: 1.85;
+    display: flex;
+    align-items: center;
+}
+
+/* 会社名のみ大きく */
+.company-info-row:first-child .company-info-value,
+.company-info-item:first-child .company-info-value {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 900px) {
+    .about-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 40px; }
+    .about-header-note { text-align: left; max-width: 100%; }
+
+    .about-vmv-grid,
+    .about-vision-grid { grid-template-columns: 1fr; margin-bottom: 40px; }
+
+    .about-vmv-card,
+    .about-vision-card { padding: 28px 24px; }
+
+    .about-vmv-card + .about-vmv-card,
+    .about-vision-card + .about-vision-card {
+        border-left: none;
+        border-top: 1px solid var(--bg-gray);
+    }
+
+    .company-info-bar { padding: 12px 20px; }
+
+    .company-info-row,
+    .company-info-item { grid-template-columns: 72px 1fr; }
+
+    .company-info-label {
+        padding: 14px 8px 14px 16px;
+        font-size: 0.75rem;
+        gap: 6px;
+    }
+    .company-info-label::before { display: none; }
+
+    .company-info-value { padding: 14px 16px; font-size: 0.875rem; }
+
+    .company-info-row:first-child .company-info-value,
+    .company-info-item:first-child .company-info-value { font-size: 1.125rem; }
+}
