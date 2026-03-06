@@ -298,7 +298,8 @@
 
 .footer-links {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 8px 24px;
 }
 
 .footer-link {
