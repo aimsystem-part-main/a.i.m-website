@@ -1,0 +1,345 @@
+/* ============================================
+   13 - Footer
+   ─────────────────────────────────────────────
+   ヘッダーの濃紺ガラスと連動するダーク系フッター
+   蒼×水色グラデをアクセントに使い
+   Hero / Header と同じ配色軸でサイトを締める
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   ベース
+───────────────────────────────────────────── */
+.footer {
+    position: relative;
+    background: #030E36;   /* ヘッダーのガラス背景と同じ濃紺 */
+    color: white;
+    overflow: hidden;
+}
+
+/* 上部グロー: Hero の水色が流れ込んでくるイメージ */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -160px; left: -10%;
+    width: 60%; height: 400px;
+    background: radial-gradient(ellipse,
+        rgba(0, 102, 255, 0.18) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* 右下グロー */
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -5%;
+    width: 40%; height: 300px;
+    background: radial-gradient(ellipse,
+        rgba(0, 212, 255, 0.10) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   上部グラデーションボーダーライン
+───────────────────────────────────────────── */
+.footer-top-border {
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 102, 255, 0.6) 20%,
+        rgba(0, 212, 255, 0.9) 50%,
+        rgba(0, 102, 255, 0.6) 80%,
+        transparent 100%
+    );
+}
+
+/* ─────────────────────────────────────────────
+   メインコンテンツ
+───────────────────────────────────────────── */
+.footer-main {
+    position: relative;
+    z-index: 1;
+    padding: 72px 0 48px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.1fr 1.6fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 64px;
+}
+
+/* ─────────────────────────────────────────────
+   ロゴ・タグライン
+───────────────────────────────────────────── */
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    text-decoration: none;
+}
+
+.footer-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.30);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.footer-logo:hover .footer-logo-img {
+    opacity: 0.85;
+    transform: scale(1.04);
+}
+
+/* logo-text: ロゴ画像にテキスト含まれるので非表示 */
+.footer-logo .logo-text {
+    display: none;
+}
+
+.footer-tagline {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.60);
+    line-height: 1.75;
+    max-width: 260px;
+    margin-bottom: 28px;
+}
+
+/* SNS アイコン行 */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.65);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+.footer-social-link:hover {
+    background: rgba(0, 102, 255, 0.25);
+    border-color: rgba(0, 212, 255, 0.45);
+    color: white;
+    transform: translateY(-2px);
+}
+.footer-social-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* ─────────────────────────────────────────────
+   ナビゲーション
+───────────────────────────────────────────── */
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.footer-nav-title {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(0, 212, 255, 0.85);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+/* タイトル下の短い蒼ライン */
+.footer-nav-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 24px; height: 1.5px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+    border-radius: 1px;
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    position: relative;
+}
+
+/* ホバー時: 水色ドット + 右シフト */
+.footer-nav-list a::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.22s ease;
+}
+.footer-nav-list a:hover {
+    color: white;
+    padding-left: 4px;
+}
+.footer-nav-list a:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ─────────────────────────────────────────────
+   お問い合わせ CTA
+───────────────────────────────────────────── */
+.footer-cta-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-cta-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(0, 212, 255, 0.85);
+    margin-bottom: 4px;
+}
+
+.footer-cta-text {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.60);
+    line-height: 1.7;
+}
+
+.footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: white;
+    color: var(--primary-blue-dark);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-family: var(--font-body);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+.footer-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #E8F0FF;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.footer-cta-btn:hover::before { opacity: 1; }
+.footer-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+.footer-cta-btn span,
+.footer-cta-btn svg { position: relative; z-index: 1; }
+.footer-cta-btn .btn-arrow { transition: transform 0.22s ease; }
+.footer-cta-btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* ─────────────────────────────────────────────
+   ボトムバー
+───────────────────────────────────────────── */
+.footer-bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.copyright {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.02em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-link {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-link:hover { color: rgba(255, 255, 255, 0.88); }
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1.4fr;
+        gap: 48px;
+    }
+    .footer-cta-section { display: none; } /* タブレットでは非表示 */
+}
+
+@media (max-width: 768px) {
+    .footer-main { padding: 56px 0 40px; }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-tagline { max-width: 100%; }
+
+    .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-nav { grid-template-columns: 1fr; gap: 28px; }
+}
