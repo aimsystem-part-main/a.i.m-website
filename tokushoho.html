@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="株式会社A.I.M プライバシーポリシー">
+    <title>プライバシーポリシー | 株式会社A.I.M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Variables ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue:       #0066FF;
+            --blue-dark:  #0052CC;
+            --cyan:       #00D4FF;
+            --navy:       #030E36;
+            --text-dark:  #0F172A;
+            --text-gray:  #334155;
+            --text-light: #64748B;
+            --bg-light:   #F8FAFC;
+            --border:     rgba(0, 102, 255, 0.10);
+            --font-head:  'Playfair Display', serif;
+            --font-body:  'Sora', sans-serif;
+        }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: #fff;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--blue); text-decoration: none; transition: opacity .2s; }
+        a:hover { opacity: .75; text-decoration: underline; }
+
+        /* ── Header ── */
+        .site-header {
+            background: var(--navy);
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-header-logo {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: .04em;
+        }
+        .site-header-back {
+            font-size: .8125rem;
+            color: rgba(255,255,255,.65);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s;
+            text-decoration: none;
+        }
+        .site-header-back:hover { color: #fff; text-decoration: none; }
+        .site-header-back svg { flex-shrink: 0; }
+
+        /* ── Hero ── */
+        .pp-hero {
+            background: var(--navy);
+            padding: 64px 32px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pp-hero::before {
+            content: '';
+            position: absolute;
+            top: -80px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse,
+                rgba(0,102,255,.40) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .pp-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; right: 10%;
+            width: 300px; height: 260px;
+            background: radial-gradient(ellipse,
+                rgba(0,212,255,.22) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .pp-hero-label {
+            position: relative; z-index: 1;
+            display: inline-block;
+            font-size: .6875rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 16px;
+        }
+        .pp-hero h1 {
+            position: relative; z-index: 1;
+            font-family: var(--font-head);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -.01em;
+            margin-bottom: 20px;
+        }
+        .pp-hero-meta {
+            position: relative; z-index: 1;
+            font-size: .875rem;
+            color: rgba(255,255,255,.50);
+        }
+
+        /* ── Layout ── */
+        .pp-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 72px 32px 100px;
+        }
+
+        /* ── Lead ── */
+        .pp-lead {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            padding: 32px 36px;
+            background: var(--bg-light);
+            border-left: 3px solid var(--blue);
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 64px;
+        }
+
+        /* ── TOC ── */
+        .pp-toc {
+            background: var(--bg-light);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 36px;
+            margin-bottom: 64px;
+        }
+        .pp-toc-title {
+            font-size: .6875rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 18px;
+        }
+        .pp-toc ol {
+            list-style: none;
+            counter-reset: toc;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 32px;
+        }
+        .pp-toc li {
+            counter-increment: toc;
+            font-size: .9rem;
+        }
+        .pp-toc li::before {
+            content: counter(toc, decimal-leading-zero) ". ";
+            color: var(--blue);
+            font-weight: 600;
+            font-size: .75rem;
+            margin-right: 4px;
+        }
+        .pp-toc a { color: var(--text-gray); }
+        .pp-toc a:hover { color: var(--blue); text-decoration: none; }
+
+        /* ── Section ── */
+        .pp-section {
+            margin-bottom: 56px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0,102,255,.08);
+        }
+        .pp-section:first-of-type { border-top: none; }
+
+        .pp-section-num {
+            font-size: .6875rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            color: var(--cyan);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .pp-section h2 {
+            font-family: var(--font-head);
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--blue), var(--cyan)) 1;
+            display: inline-block;
+            width: 100%;
+        }
+        .pp-section p {
+            font-size: .9375rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+        .pp-section p:last-child { margin-bottom: 0; }
+
+        /* リスト */
+        .pp-list {
+            list-style: none;
+            margin: 12px 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pp-list li {
+            position: relative;
+            padding-left: 22px;
+            font-size: .9375rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+        .pp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 11px;
+            width: 7px; height: 7px;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            border-radius: 50%;
+        }
+
+        /* 用途テーブル */
+        .pp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 20px;
+            font-size: .9rem;
+        }
+        .pp-table th {
+            background: linear-gradient(135deg,
+                rgba(0,102,255,.08) 0%, rgba(0,212,255,.06) 100%);
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 12px 20px;
+            text-align: left;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .pp-table td {
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            color: var(--text-gray);
+            vertical-align: top;
+        }
+        .pp-table tr:nth-child(even) td {
+            background: var(--bg-light);
+        }
+
+        /* ハイライトブロック */
+        .pp-note {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: rgba(0,102,255,.04);
+            border: 1.5px solid rgba(0,102,255,.12);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+        .pp-note-icon {
+            flex-shrink: 0;
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pp-note-icon svg { color: white; }
+        .pp-note-body { font-size: .9rem; color: var(--text-gray); line-height: 1.85; }
+        .pp-note-body strong { color: var(--text-dark); }
+
+        /* 会社情報ボックス */
+        .pp-company-box {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 32px 36px;
+            color: rgba(255,255,255,.80);
+            font-size: .9rem;
+            line-height: 2;
+        }
+        .pp-company-box strong { color: #fff; }
+        .pp-company-box a { color: var(--cyan); }
+
+        /* 改定日バッジ */
+        .pp-revision {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: .8125rem;
+            color: var(--text-light);
+            margin-bottom: 56px;
+        }
+        .pp-revision span { font-weight: 600; color: var(--text-dark); }
+
+        /* ── Footer ── */
+        .pp-footer {
+            background: var(--navy);
+            text-align: center;
+            padding: 40px 32px;
+            font-size: .8125rem;
+            color: rgba(255,255,255,.35);
+        }
+        .pp-footer a {
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+        }
+        .pp-footer a:hover { color: #fff; }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .pp-wrap { padding: 48px 20px 72px; }
+            .pp-toc ol { grid-template-columns: 1fr; }
+            .pp-lead, .pp-toc { padding: 24px 20px; }
+            .pp-company-box { padding: 24px 20px; }
+            .pp-table { font-size: .825rem; }
+            .pp-table th, .pp-table td { padding: 10px 12px; }
+            .site-header { padding: 16px 20px; }
+            .pp-hero { padding: 48px 20px 64px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="site-header-logo">A.I.M</div>
+    <a href="index.html" class="site-header-back">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        トップページへ戻る
+    </a>
+</header>
+
+<!-- ヒーロー -->
+<div class="pp-hero">
+    <div class="pp-hero-label">Legal</div>
+    <h1>プライバシーポリシー</h1>
+    <p class="pp-hero-meta">株式会社A.I.M &nbsp;|&nbsp; Privacy Policy</p>
+</div>
+
+<!-- 本文 -->
+<main class="pp-wrap">
+
+    <!-- 制定日バッジ -->
+    <div class="pp-revision">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="3" width="14" height="14" rx="2"/>
+            <path d="M7 7h6M7 10h6M7 13h4"/>
+        </svg>
+        制定日：2024年12月26日 &nbsp;&nbsp; 最終改定日：<span>2025年1月1日</span>
+    </div>
+
+    <!-- リード -->
+    <p class="pp-lead">
+        株式会社A.I.M（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、個人情報の保護に関する法律（個人情報保護法）その他の関係法令・ガイドラインを遵守し、以下のプライバシーポリシー（以下「本ポリシー」）に従って適切に取り扱います。
+    </p>
+
+    <!-- 目次 -->
+    <nav class="pp-toc">
+        <div class="pp-toc-title">目次 — Table of Contents</div>
+        <ol>
+            <li><a href="#s1">個人情報の定義</a></li>
+            <li><a href="#s2">収集する個人情報の種類</a></li>
+            <li><a href="#s3">個人情報の利用目的</a></li>
+            <li><a href="#s4">個人情報の第三者提供</a></li>
+            <li><a href="#s5">個人情報の共同利用</a></li>
+            <li><a href="#s6">個人情報の安全管理措置</a></li>
+            <li><a href="#s7">Cookieおよびアクセス解析</a></li>
+            <li><a href="#s8">外部サービス連携</a></li>
+            <li><a href="#s9">開示・訂正・削除等のご請求</a></li>
+            <li><a href="#s10">お問い合わせ窓口</a></li>
+            <li><a href="#s11">プライバシーポリシーの変更</a></li>
+        </ol>
+    </nav>
+
+    <!-- 第1条 -->
+    <section class="pp-section" id="s1">
+        <div class="pp-section-num">Article 01</div>
+        <h2>個人情報の定義</h2>
+        <p>本ポリシーにおける「個人情報」とは、個人情報保護法第2条第1項に定める「個人情報」を指し、生存する個人に関する情報であって、氏名・生年月日・メールアドレス・電話番号その他の記述等により特定の個人を識別することができるもの（他の情報と容易に照合することができ、それにより特定の個人を識別することができるものを含む）をいいます。</p>
+    </section>
+
+    <!-- 第2条 -->
+    <section class="pp-section" id="s2">
+        <div class="pp-section-num">Article 02</div>
+        <h2>収集する個人情報の種類</h2>
+        <p>当社は、以下の情報を取得することがあります。</p>
+        <ul class="pp-list">
+            <li>氏名（フリガナを含む）</li>
+            <li>会社名・部署名・役職</li>
+            <li>メールアドレス</li>
+            <li>電話番号</li>
+            <li>お問い合わせ内容・メッセージ</li>
+            <li>当社サービスの利用状況・契約情報</li>
+            <li>IPアドレス・ブラウザ種別・Cookie情報（アクセス解析目的）</li>
+        </ul>
+    </section>
+
+    <!-- 第3条 -->
+    <section class="pp-section" id="s3">
+        <div class="pp-section-num">Article 03</div>
+        <h2>個人情報の利用目的</h2>
+        <p>取得した個人情報は、以下の目的の範囲内で利用します。</p>
+        <table class="pp-table">
+            <thead>
+                <tr>
+                    <th>利用目的</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>サービス提供</td>
+                    <td>TikTok採用戦略支援・SNSマーケティング・DX支援・システム開発等の各サービスの提供・遂行</td>
+                </tr>
+                <tr>
+                    <td>お問い合わせ対応</td>
+                    <td>本ウェブサイト上のお問い合わせフォームへの返信・相談対応</td>
+                </tr>
+                <tr>
+                    <td>契約管理</td>
+                    <td>契約の締結・履行・管理、請求・支払いに関する業務</td>
+                </tr>
+                <tr>
+                    <td>情報提供</td>
+                    <td>当社サービス・キャンペーン・セミナー等に関するご案内（同意を得た場合に限る）</td>
+                </tr>
+                <tr>
+                    <td>品質改善</td>
+                    <td>サービス内容の改善および新サービス開発のための統計・分析（個人を特定しない形で利用）</td>
+                </tr>
+                <tr>
+                    <td>法令遵守</td>
+                    <td>法令・規制・当局の要請への対応</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pp-note">
+            <div class="pp-note-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 14h.01"/>
+                </svg>
+            </div>
+            <div class="pp-note-body">
+                <strong>目的外利用の禁止：</strong>上記の利用目的の範囲を超えて個人情報を利用する場合は、事前にご本人の同意を得た上で行います。
+            </div>
+        </div>
+    </section>
+
+    <!-- 第4条 -->
+    <section class="pp-section" id="s4">
+        <div class="pp-section-num">Article 04</div>
+        <h2>個人情報の第三者提供</h2>
+        <p>当社は、以下のいずれかに該当する場合を除き、取得した個人情報を事前に本人の同意を得ることなく第三者に提供しません。</p>
+        <ul class="pp-list">
+            <li>法令に基づく場合（裁判所・警察等の公的機関からの法的要請を含む）</li>
+            <li>人の生命・身体・財産の保護のために必要であり、本人の同意を得ることが困難な場合</li>
+            <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要があり、本人の同意を得ることが困難な場合</li>
+            <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+            <li>業務委託先に対し、利用目的の達成に必要な範囲で個人情報の取り扱いを委託する場合（委託先に対し必要かつ適切な監督を行います）</li>
+        </ul>
+    </section>
+
+    <!-- 第5条 -->
+    <section class="pp-section" id="s5">
+        <div class="pp-section-num">Article 05</div>
+        <h2>個人情報の共同利用</h2>
+        <p>当社は現時点において、個人情報の共同利用は行っておりません。共同利用を行う場合は、事前に本ポリシーを改定の上、共同利用の目的・範囲・管理責任者等を明示します。</p>
+    </section>
+
+    <!-- 第6条 -->
+    <section class="pp-section" id="s6">
+        <div class="pp-section-num">Article 06</div>
+        <h2>個人情報の安全管理措置</h2>
+        <p>当社は、収集した個人情報の漏えい・滅失・毀損の防止その他個人情報の安全管理のために、以下の措置を講じます。</p>
+        <ul class="pp-list">
+            <li><strong>組織的措置：</strong>個人情報の取り扱いに関する責任者を設置し、従業員への周知・教育を実施</li>
+            <li><strong>技術的措置：</strong>SSL/TLSによる通信の暗号化、アクセス制御・認証システムの導入</li>
+            <li><strong>物理的措置：</strong>個人情報を含む書類・記録媒体の適切な保管・廃棄</li>
+            <li><strong>委託先管理：</strong>個人情報の取り扱いを委託する場合、委託先の選定基準を設け、適切な監督を実施</li>
+        </ul>
+    </section>
+
+    <!-- 第7条 -->
+    <section class="pp-section" id="s7">
+        <div class="pp-section-num">Article 07</div>
+        <h2>Cookieおよびアクセス解析について</h2>
+        <p>当社のウェブサイトでは、利便性向上およびアクセス状況の把握を目的として、Cookie（クッキー）を使用しています。Cookieとは、ウェブサイトがお客様のブラウザに送信する小さなテキストファイルです。</p>
+        <ul class="pp-list">
+            <li>Cookieにより収集される情報は、IPアドレス・ブラウザの種類・アクセス日時・参照URLなどです</li>
+            <li>収集された情報は、個人を特定する目的には使用しません</li>
+            <li>お客様はブラウザの設定によりCookieを無効化することができますが、一部のサービスが正常に動作しない場合があります</li>
+        </ul>
+        <p>当社は、以下のアクセス解析ツールを使用する場合があります。各ツールのプライバシーポリシーについては、各社のウェブサイトをご確認ください。</p>
+        <ul class="pp-list">
+            <li>Google Analytics（提供：Google LLC）</li>
+            <li>Microsoft Clarity（提供：Microsoft Corporation）</li>
+        </ul>
+    </section>
+
+    <!-- 第8条 -->
+    <section class="pp-section" id="s8">
+        <div class="pp-section-num">Article 08</div>
+        <h2>外部サービス連携について</h2>
+        <p>当社のウェブサイトおよびサービスは、以下の外部サービスと連携する場合があります。これらの外部サービスにおける個人情報の取り扱いについては、各サービスのプライバシーポリシーが適用されます。</p>
+        <ul class="pp-list">
+            <li>TikTok（提供：ByteDance Ltd.）</li>
+            <li>Instagram / Facebook（提供：Meta Platforms, Inc.）</li>
+            <li>X（旧Twitter）（提供：X Corp.）</li>
+            <li>Google フォーム・Googleサービス全般（提供：Google LLC）</li>
+        </ul>
+    </section>
+
+    <!-- 第9条 -->
+    <section class="pp-section" id="s9">
+        <div class="pp-section-num">Article 09</div>
+        <h2>開示・訂正・削除等のご請求</h2>
+        <p>お客様は、当社が保有するご自身の個人情報について、個人情報保護法の定めに基づき、以下のご請求を行うことができます。</p>
+        <ul class="pp-list">
+            <li>利用目的の通知</li>
+            <li>開示（第三者提供記録を含む）</li>
+            <li>内容の訂正・追加・削除</li>
+            <li>利用の停止・消去</li>
+            <li>第三者提供の停止</li>
+        </ul>
+        <p>ご請求はお問い合わせ窓口（第10条）宛てにご連絡ください。本人確認書類の提出をお願いする場合があります。法令の定める要件を満たさない場合やご本人の確認が取れない場合はご対応できないことがあります。</p>
+        <div class="pp-note">
+            <div class="pp-note-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M12 2H6a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/>
+                    <path d="M12 2v6h6M8 13h6M8 17h4"/>
+                </svg>
+            </div>
+            <div class="pp-note-body">
+                <strong>対応期間：</strong>ご請求を受領してから原則 <strong>2週間以内</strong> にご回答いたします。内容によっては、それ以上お時間をいただく場合がございます。
+            </div>
+        </div>
+    </section>
+
+    <!-- 第10条 -->
+    <section class="pp-section" id="s10">
+        <div class="pp-section-num">Article 10</div>
+        <h2>お問い合わせ窓口</h2>
+        <p>個人情報の取り扱いに関するお問い合わせ・苦情・ご相談は、以下の窓口までご連絡ください。</p>
+        <div class="pp-company-box">
+            <strong>株式会社A.I.M　個人情報取り扱い窓口</strong><br><br>
+            〒651-0084<br>
+            兵庫県神戸市中央区磯辺通1丁目1番18号<br>
+            カサベラ国際プラザビル707号室<br><br>
+            代表取締役社長：古市 蒼<br>
+            E-mail：<a href="mailto:info@aim-inc.co.jp">info@aim-inc.co.jp</a><br>
+            受付時間：平日 10:00〜18:00（土日祝・年末年始を除く）
+        </div>
+    </section>
+
+    <!-- 第11条 -->
+    <section class="pp-section" id="s11">
+        <div class="pp-section-num">Article 11</div>
+        <h2>プライバシーポリシーの変更</h2>
+        <p>当社は、法令の改正・事業内容の変更その他必要に応じて、本ポリシーを変更することがあります。変更後のポリシーは、本ウェブサイト上に掲載した時点から効力を生じるものとします。重要な変更がある場合は、ウェブサイト上でお知らせします。</p>
+        <p>最新のプライバシーポリシーは常に本ページにてご確認いただけます。</p>
+    </section>
+
+</main>
+
+<!-- フッター -->
+<footer class="pp-footer">
+    <p style="margin-bottom:12px;">
+        <a href="index.html">トップページ</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+    </p>
+    <p>&copy; 2025 株式会社A.I.M All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
