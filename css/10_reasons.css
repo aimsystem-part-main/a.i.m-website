@@ -1,0 +1,189 @@
+/* ============================================
+   10 - Reasons Section
+   白 × 水色 × 蒼 / コンテンツ連動デザイン
+   ============================================ */
+
+.reasons {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% 0%,
+            rgba(0, 212, 255, 0.08) 0%, transparent 65%),
+        var(--bg-light);
+}
+
+/* 右下アクセント光 */
+.reasons::after {
+    content: '';
+    position: absolute;
+    bottom: -10%; right: -5%;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(0, 102, 255, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ===== グリッド ===== */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== カード ===== */
+.reason-item {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    border: 1.5px solid rgba(0, 102, 255, 0.07);
+    box-shadow: 0 2px 12px rgba(0, 102, 255, 0.04);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.reason-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0, 102, 255, 0.13);
+    border-color: rgba(0, 102, 255, 0.22);
+}
+
+/* 上部カラーバー */
+.reason-item::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--primary-blue) 100%);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.reason-item:hover::before {
+    opacity: 1;
+}
+
+/* ===== カード内部 ===== */
+.reason-body {
+    padding: 36px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* ===== ヘッダー行 ===== */
+.reason-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+/* アイコンバッジ */
+.reason-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.10) 0%,
+        rgba(0, 212, 255, 0.14) 100%);
+    border: 1.5px solid rgba(0, 102, 255, 0.15);
+    transition: all 0.3s ease;
+    color: var(--primary-blue);
+}
+
+.reason-item:hover .reason-icon-wrap {
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.18) 0%,
+        rgba(0, 212, 255, 0.22) 100%);
+    border-color: rgba(0, 102, 255, 0.3);
+    transform: scale(1.08);
+}
+
+/* 大きな背景番号 */
+.reason-bg-num {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.10;
+    user-select: none;
+    transition: opacity 0.3s;
+}
+
+.reason-item:hover .reason-bg-num {
+    opacity: 0.18;
+}
+
+/* ===== タイトル ===== */
+.reason-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+/* ===== 本文 ===== */
+.reason-text {
+    font-size: 0.9375rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    flex: 1;
+}
+
+/* ===== 下部キーポイントタグ ===== */
+.reason-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 102, 255, 0.07);
+}
+
+.reason-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    background: rgba(0, 102, 255, 0.06);
+    border: 1px solid rgba(0, 102, 255, 0.14);
+    border-radius: 100px;
+    padding: 4px 12px;
+    transition: background 0.2s;
+}
+
+.reason-item:hover .reason-tag {
+    background: rgba(0, 102, 255, 0.10);
+}
+
+.reason-tag-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .reasons-grid { grid-template-columns: 1fr; gap: 16px; }
+    .reason-body  { padding: 28px 24px 32px; }
+    .reason-bg-num { font-size: 3.5rem; }
+}
