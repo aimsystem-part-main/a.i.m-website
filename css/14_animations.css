@@ -1,0 +1,34 @@
+/* ============================================
+   14 - Animations & Keyframes
+   ============================================ */
+
+/* --- スクロールアニメーション --- */
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.animate-on-scroll.visible {
+    animation: fadeInUp 0.7s ease forwards;
+}
+
+/* --- キーフレーム --- */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.1); }
+}
