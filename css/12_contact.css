@@ -1,0 +1,373 @@
+/* ============================================
+   12 - Contact Section
+   蒼グラデ背景 × 左コピー + 右フォームカード
+   ============================================ */
+
+.contact {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(140deg,
+            #003DB3                  0%,
+            var(--primary-blue)      30%,
+            #0077E6                  55%,
+            #E8F4FF                  80%,
+            var(--bg-light)          100%
+        );
+}
+
+/* 右上の水色グロー */
+.contact::before {
+    content: '';
+    position: absolute;
+    top: -15%; right: -10%;
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(0, 212, 255, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* 斜線テクスチャ */
+.contact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 28px,
+        rgba(255,255,255,0.025) 28px,
+        rgba(255,255,255,0.025) 29px
+    );
+    pointer-events: none;
+}
+
+/* ===== 2カラムレイアウト ===== */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 64px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== 左: リードコピー ===== */
+.contact-lead { color: white; padding-top: 8px; }
+
+.contact-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 28px;
+}
+.contact-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--accent-cyan);
+    flex-shrink: 0;
+}
+
+.contact-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.contact-title em {
+    font-style: italic;
+    color: rgba(180, 240, 255, 0.95);
+}
+
+.contact-desc {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+}
+
+/* ポイントリスト */
+.contact-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-point {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+}
+
+.contact-point-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-cyan);
+}
+
+/* 返信目安バッジ */
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+}
+
+.contact-badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ===== 右: フォームカード ===== */
+.contact-form-wrapper {
+    background: white;
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 32px 64px rgba(0, 30, 100, 0.18);
+}
+
+.form-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid var(--bg-gray);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-card-title-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg,
+        rgba(0,102,255,0.10) 0%,
+        rgba(0,212,255,0.14) 100%);
+    border: 1.5px solid rgba(0,102,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+/* ===== フォームパーツ ===== */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 7px;
+    color: var(--text-dark);
+}
+
+.required {
+    color: var(--error-red);
+    margin-left: 3px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--bg-gray);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: var(--bg-light);
+    transition: var(--transition-base);
+    outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: var(--primary-blue);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* プライバシー */
+.form-privacy { margin-bottom: 24px; margin-top: 4px; }
+
+.privacy-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-gray);
+    user-select: none;
+}
+
+.privacy-checkbox input[type="checkbox"] {
+    width: 18px; height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.privacy-link {
+    color: var(--primary-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* 送信ボタン */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 32px;
+    background: linear-gradient(110deg,
+        var(--primary-blue-dark) 0%,
+        var(--primary-blue)      50%,
+        #0099E6                  100%
+    );
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+        #003DB3                   0%,
+        var(--primary-blue-dark)  50%,
+        var(--primary-blue)       100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-submit:hover::before { opacity: 1; }
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 102, 255, 0.35);
+}
+
+.btn-submit span,
+.btn-submit svg { position: relative; z-index: 1; }
+.btn-submit .btn-arrow { transition: transform 0.25s ease; }
+.btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+/* 送信完了 */
+.form-success {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.success-icon-wrap {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        rgba(16,185,129,0.10) 0%,
+        rgba(16,185,129,0.18) 100%);
+    border: 2px solid rgba(16,185,129,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--success-green);
+}
+
+.success-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.success-text {
+    font-size: 1rem;
+    color: var(--text-gray);
+    line-height: 1.75;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .contact-form-wrapper { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+}
