@@ -1,0 +1,425 @@
+/* ============================================
+   05 - Hero Section
+   背景: 蒼(#0066FF, 0.88) → 水色(#00D4FF, 0.80) グラデ
+   配色はすべてこの背景に合わせて統一
+   ============================================ */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- 背景 --- */
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    /* [変更] brightness を上げて蒼オーバーレイと自然に馴染む明るさに */
+    filter: brightness(0.75) saturate(0.9);
+}
+
+/* [変更] オーバーレイ: 蒼→水色グラデ（背景色の軸） */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(0, 102, 255, 0.88) 0%,
+        rgba(0, 212, 255, 0.80) 100%
+    );
+}
+
+/* ノイズテクスチャ（変更なし） */
+.hero-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 128px;
+}
+
+/* --- 左縦ラインアクセント --- */
+.hero-line-left {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.hero-line-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* [変更] 背景の蒼に映える白→白系グラデに。水色だと溶け込んで見えないため */
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 20%,
+        white 50%,
+        rgba(255, 255, 255, 0.8) 80%,
+        transparent 100%
+    );
+    animation: heroLineSlide 3s ease-out forwards;
+    transform: translateY(-100%);
+}
+
+@keyframes heroLineSlide {
+    to { transform: translateY(0); }
+}
+
+/* --- メインレイアウト --- */
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 120px 80px 100px 100px;
+    gap: 48px;
+}
+
+/* --- テキスト --- */
+.hero-text {
+    flex: 1;
+    color: white;
+    max-width: 760px;
+}
+
+/* アイブロウ */
+.hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: heroFadeUp 0.7s 0.2s ease forwards;
+}
+
+.hero-eyebrow-line {
+    width: 40px;
+    height: 2px;
+    /* [変更] 水色だと背景に溶けるため白に変更 */
+    background: rgba(255, 255, 255, 0.9);
+    flex-shrink: 0;
+}
+
+.hero-eyebrow-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    /* [変更] 水色は背景と同化するため白に変更 */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* タイトル */
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: heroFadeUp 0.8s 0.4s ease forwards;
+}
+
+.hero-title-line {
+    display: block;
+    /* [変更] 透過白を少し上げて蒼背景でも視認しやすく */
+    color: rgba(255, 255, 255, 0.60);
+    font-style: italic;
+    font-size: 0.68em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+}
+
+.hero-title-main {
+    display: block;
+    color: white;
+}
+
+.hero-title-accent {
+    display: block;
+    /* [変更] 水色終端だと背景水色に溶けるため、白→薄黄白のグラデに変更 */
+    background: linear-gradient(90deg, #FFFFFF 0%, #E0F7FF 60%, #B3EFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+}
+
+/* サブテキスト */
+.hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.8;
+    /* [変更] 蒼背景に対して白を少し上げてコントラスト確保 */
+    color: rgba(255, 255, 255, 0.90);
+    margin-top: 32px;
+    margin-bottom: 44px;
+    max-width: 560px;
+    opacity: 0;
+    animation: heroFadeUp 0.8s 0.6s ease forwards;
+}
+
+.hero-subtitle strong {
+    color: white;
+    font-weight: 700;
+}
+
+.hero-stat-inline {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+    /* [変更] 背景が蒼なのでインラインバッジは白ベースに変更。水色だと埋もれる */
+    background: rgba(255, 255, 255, 0.20);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-weight: 800;
+    color: white;
+    font-size: 1.1em;
+}
+
+/* CTA */
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: heroFadeUp 0.8s 0.8s ease forwards;
+}
+
+/* [変更] プライマリボタン: 白地→ホバーで濃紺（蒼背景に白が映える） */
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    background: white;
+    color: var(--primary-blue-dark, #0052CC);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-family: var(--font-body);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hero-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* [変更] ホバー時: 濃紺ソリッドに（グラデだと蒼背景と混同するため） */
+    background: #003DB3;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-hero-primary:hover::before { opacity: 1; }
+.btn-hero-primary:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.btn-hero-primary span,
+.btn-hero-primary svg {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-hero-primary .btn-arrow {
+    transition: transform 0.25s ease;
+}
+
+.btn-hero-primary:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* [変更] ゴーストボタン: 背景白10%→透過度を上げてはっきりさせる */
+.btn-hero-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 32px;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    font-family: var(--font-body);
+    transition: all 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.btn-hero-ghost:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* --- フローティング統計バッジ --- */
+.hero-stats-float {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: heroFadeLeft 0.9s 1s ease forwards;
+}
+
+/* [変更] stat-badge: 背景を白ベース半透明に。蒼背景でグラスモーフィズムが映える */
+.stat-badge {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    color: white;
+    min-width: 160px;
+    transition: all 0.3s ease;
+}
+
+.stat-badge:hover {
+    /* [変更] ホバーで白の透過を上げてメリハリを出す */
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.55);
+    transform: translateX(-4px);
+}
+
+/* [変更] 数字: 白ソリッド。背景が既に水色なのでグラデより視認性が高い */
+.stat-badge-num {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+    color: white;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* [変更] ディバイダー: 白に変更 */
+.stat-badge-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 auto 6px;
+}
+
+.stat-badge-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    /* [変更] 薄すぎるので少し白を上げる */
+    color: rgba(255, 255, 255, 0.80);
+    letter-spacing: 0.05em;
+}
+
+/* --- スクロールインジケーター --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 36px;
+    left: 100px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    animation: heroFadeUp 0.8s 1.2s ease forwards;
+}
+
+.scroll-track {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+}
+
+/* [変更] スクロールつまみ: 水色だと背景水色に埋もれるため白に */
+.scroll-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: white;
+    border-radius: 1px;
+    animation: heroScrollAnim 1.8s ease-in-out infinite;
+}
+
+@keyframes heroScrollAnim {
+    0%   { top: -50%; }
+    100% { top: 100%; }
+}
+
+.scroll-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+}
+
+/* --- Keyframes --- */
+@keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 1024px) {
+    .hero-inner        { padding: 120px 48px 100px 80px; }
+    .hero-stats-float  { display: none; }
+    .hero-line-left    { left: 32px; }
+    .scroll-indicator  { left: 80px; }
+}
+
+@media (max-width: 768px) {
+    .hero-inner {
+        padding: 100px 24px 80px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .hero-line-left    { display: none; }
+    .scroll-indicator  { left: 24px; }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-ghost {
+        justify-content: center;
+        width: 100%;
+    }
+}
